@@ -1,0 +1,106 @@
+"use client";
+
+import Image from "next/image";
+
+interface Order {
+  id: string;
+  customerName: string;
+  timestamp: string;
+  amount: string;
+  avatarUrl?: string;
+}
+
+const orders: Order[] = [
+  {
+    id: "1",
+    customerName: "Sarah Chen",
+    timestamp: "10 minutes ago",
+    amount: "+₩189,000",
+    avatarUrl: "/avatars/avatar-default.png",
+  },
+  {
+    id: "2",
+    customerName: "Sarah Chen",
+    timestamp: "10 minutes ago",
+    amount: "+₩189,000",
+    avatarUrl: "/avatars/avatar-default.png",
+  },
+  {
+    id: "3",
+    customerName: "Sarah Chen",
+    timestamp: "10 minutes ago",
+    amount: "+₩189,000",
+    avatarUrl: "/avatars/avatar-default.png",
+  },
+];
+
+export default function RecentOrders() {
+  return (
+    <div className="bg-white rounded-[20px] border-[0.5px] border-[rgba(21,21,21,0.1)] p-[23px_30px]">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-[30px]">
+        <div className="flex items-center gap-[15px]">
+          <div className="w-[30px] h-[30px] bg-[#1D222E] rounded-[5px] flex items-center justify-center">
+            <span className="text-white text-xl">✨</span>
+          </div>
+          <h2 className="text-[20px] font-normal leading-[1em] text-[#151515]">
+            Recent Orders
+          </h2>
+        </div>
+        <a
+          href="#"
+          className="text-[16px] font-normal leading-[1em] text-[#00961B] hover:underline"
+        >
+          See All
+        </a>
+      </div>
+
+      {/* Orders List */}
+      <div className="flex flex-col gap-[15px]">
+        {orders.map((order) => (
+          <div
+            key={order.id}
+            className="bg-white border-[0.5px] border-[rgba(30,30,30,0.1)] rounded-[10px] p-4"
+          >
+            <div className="flex justify-between items-center gap-4">
+              {/* Customer Info */}
+              <div className="flex items-center gap-[11px]">
+                {/* Avatar with Gradient Border */}
+                <div className="relative w-[51px] h-[51px]">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#E26105] to-[#1962FC] p-[2px]">
+                    <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+                      <Image
+                        src={order.avatarUrl || "/avatars/avatar-default.png"}
+                        alt={order.customerName}
+                        width={40}
+                        height={40}
+                        className="rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Name and Timestamp */}
+                <div className="flex flex-col gap-[12px]">
+                  <h3 className="text-[20px] font-medium leading-[1em] text-[#1E1E1E]">
+                    {order.customerName}
+                  </h3>
+                  <div className="flex items-center gap-[10px]">
+                    <span className="text-[16px] font-normal leading-[1em] text-[#747474]">
+                      {order.timestamp}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Amount */}
+              <div className="text-[24px] font-medium leading-[1em] text-[#00961B]">
+                {order.amount}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

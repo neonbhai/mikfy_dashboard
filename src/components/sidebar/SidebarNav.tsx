@@ -16,12 +16,7 @@ export default function SidebarNav() {
   return (
     <nav className="px-5 py-6 space-y-5">
       <div className="space-y-2">
-        <SidebarItem
-          href="/overview"
-          label="Overview"
-          icon={<HomeIcon />}
-          active
-        />
+        <SidebarItem href="/overview" label="Overview" icon={<HomeIcon />} />
         <SidebarItem href="/analytics" label="Analytics" icon={<BrainIcon />} />
         <SidebarItem
           href="/orders"
