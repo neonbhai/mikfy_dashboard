@@ -17,7 +17,7 @@ export default function StockMovementHistory({
   movements = [],
 }: StockMovementHistoryProps) {
   return (
-    <div className="w-full max-w-[1104px] bg-white border border-[#151515]/10 rounded-[20px] p-[23px_30px] flex flex-col gap-2.5">
+    <div className="w-full bg-white border border-[#151515]/10 rounded-[20px] p-[23px_30px] flex flex-col gap-2.5">
       {/* Header */}
       <div className="flex items-center justify-between gap-16 w-full">
         <div className="flex items-center gap-[15px] w-[309px]">

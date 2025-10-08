@@ -18,7 +18,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
 
       <button
         onClick={onEdit}
-        className="w-full py-[10px] px-[10px] bg-[#151515] text-white rounded-[10px] text-[16px] font-normal leading-[1.3em] hover:bg-[#2a2a2a] transition-colors"
+        className="w-full cursor-pointer py-[10px] px-[10px] bg-[#151515] text-white rounded-[10px] text-[16px] font-normal leading-[1.3em] hover:bg-[#2a2a2a] transition-colors"
       >
         Edit Product
       </button>
@@ -27,4 +27,3 @@ const ProductActions: React.FC<ProductActionsProps> = ({
 };
 
 export default ProductActions;
-

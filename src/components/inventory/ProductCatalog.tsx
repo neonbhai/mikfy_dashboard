@@ -13,7 +13,7 @@ const ProductCatalog: React.FC = () => {
       price: "₩89,000",
       stock: 45,
       maxStock: 100,
-      image: "/avatars/avatar-default.png", // Placeholder image
+      image: "/products/vitamin-c-serum.png",
       isActive: true,
     },
     {
@@ -23,7 +23,7 @@ const ProductCatalog: React.FC = () => {
       price: "₩89,000",
       stock: 45,
       maxStock: 100,
-      image: "/avatars/avatar-default.png", // Placeholder image
+      image: "/products/vitamin-c-serum.png",
       isActive: true,
     },
     {
@@ -33,7 +33,7 @@ const ProductCatalog: React.FC = () => {
       price: "₩89,000",
       stock: 45,
       maxStock: 100,
-      image: "/avatars/avatar-default.png", // Placeholder image
+      image: "/products/vitamin-c-serum.png",
       isActive: true,
     },
   ]);
@@ -55,7 +55,7 @@ const ProductCatalog: React.FC = () => {
   };
 
   return (
-    <div className="w-[1104px] bg-white border-[0.5px] border-[rgba(21,21,21,0.1)] rounded-[20px] p-[23px_30px] flex flex-col gap-[10px]">
+    <div className="w-full bg-white border-[0.5px] border-[rgba(21,21,21,0.1)] rounded-[20px] p-[23px_30px] flex flex-col gap-[10px]">
       <div className="flex flex-col gap-[30px]">
         <InventoryHeader />
 
@@ -75,4 +75,3 @@ const ProductCatalog: React.FC = () => {
 };
 
 export default ProductCatalog;
-

@@ -30,7 +30,7 @@ const mockInvoices: Invoice[] = [
     id: "#INV_1002",
     customerName: "Michael Lee",
     date: "23/7/2025",
-    status: "Pending",
+    status: "Paid",
     amount: "₩320,000",
   },
   {
@@ -51,7 +51,7 @@ const mockInvoices: Invoice[] = [
     id: "#INV_1005",
     customerName: "Jessica Wong",
     date: "20/7/2025",
-    status: "Overdue",
+    status: "Paid",
     amount: "₩275,000",
   },
 ];
@@ -79,7 +79,7 @@ export const BillingInvoice: React.FC = () => {
   );
 
   return (
-    <div className="bg-white rounded-[20px] border-[0.5px] border-[rgba(21,21,21,0.1)] p-[18px_30px] w-full max-w-[1104px]">
+    <div className="bg-white rounded-[20px] border-[0.5px] border-[rgba(21,21,21,0.1)] p-[18px_30px] w-full">
       {/* Header */}
       <div className="flex items-center justify-between mb-[27px]">
         <div className="flex items-center gap-[15px]">
@@ -117,29 +117,29 @@ export const BillingInvoice: React.FC = () => {
       {/* Table */}
       <div className="flex flex-col gap-[10px]">
         {/* Table Header */}
-        <div className="flex justify-between items-center bg-[#F2F2F2] rounded-[10px]">
-          <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
-            <span className="text-[16px] leading-[1em] text-[#5E5E5E]">
+        <div className="flex items-center bg-[#F2F2F2] rounded-[10px]">
+          <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
+            <span className="text-[16px] leading-[1em] text-[#5E5E5E] text-center">
               Invoice
             </span>
           </div>
-          <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
-            <span className="text-[16px] leading-[1em] text-[#5E5E5E]">
+          <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
+            <span className="text-[16px] leading-[1em] text-[#5E5E5E] text-center">
               Customer Name
             </span>
           </div>
-          <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
-            <span className="text-[16px] leading-[1em] text-[#5E5E5E]">
+          <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
+            <span className="text-[16px] leading-[1em] text-[#5E5E5E] text-center">
               Date
             </span>
           </div>
-          <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
-            <span className="text-[16px] leading-[1em] text-[#5E5E5E]">
+          <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
+            <span className="text-[16px] leading-[1em] text-[#5E5E5E] text-center">
               Status
             </span>
           </div>
-          <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
-            <span className="text-[16px] leading-[1em] text-[#5E5E5E]">
+          <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
+            <span className="text-[16px] leading-[1em] text-[#5E5E5E] text-center">
               Amount
             </span>
           </div>
@@ -148,33 +148,33 @@ export const BillingInvoice: React.FC = () => {
         {/* Table Rows */}
         {filteredInvoices.map((invoice, index) => (
           <React.Fragment key={invoice.id}>
-            <div className="flex justify-between items-center h-[46px]">
-              <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
-                <span className="text-[16px] leading-[1em] text-[#5E5E5E]">
+            <div className="flex items-center h-[46px]">
+              <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
+                <span className="text-[16px] leading-[1em] text-[#5E5E5E] text-center">
                   {invoice.id}
                 </span>
               </div>
-              <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
-                <span className="text-[16px] leading-[1em] text-[#5E5E5E]">
+              <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
+                <span className="text-[16px] leading-[1em] text-[#5E5E5E] text-center">
                   {invoice.customerName}
                 </span>
               </div>
-              <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
-                <span className="text-[16px] leading-[1em] text-[#5E5E5E]">
+              <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
+                <span className="text-[16px] leading-[1em] text-[#5E5E5E] text-center">
                   {invoice.date}
                 </span>
               </div>
-              <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
+              <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
                 <span
-                  className={`text-[16px] leading-[1em] ${getStatusColor(
+                  className={`text-[16px] leading-[1em] text-center ${getStatusColor(
                     invoice.status
                   )}`}
                 >
                   {invoice.status}
                 </span>
               </div>
-              <div className="flex justify-center items-center py-[15px] px-[45px] min-w-[142px]">
-                <span className="text-[16px] leading-[1em] text-[#5E5E5E]">
+              <div className="flex-1 flex justify-center items-center py-[15px] px-[45px]">
+                <span className="text-[16px] leading-[1em] text-[#5E5E5E] text-center">
                   {invoice.amount}
                 </span>
               </div>
