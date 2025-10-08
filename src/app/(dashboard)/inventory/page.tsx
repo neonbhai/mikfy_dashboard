@@ -1,4 +1,6 @@
 import { ProductCatalog, StockMovementHistory } from "@/components/inventory";
+import { PageTitle } from "@/components/shared";
+import { StatsCardsRow } from "@/components/overview";
 
 // Sample data - replace with actual API data
 const sampleMovements = [
@@ -26,10 +28,50 @@ const sampleMovements = [
 ];
 
 export default function InventoryPage() {
+  const inventoryStats = [
+    {
+      title: "Total Products",
+      value: "236",
+      change: "+5.2% vs last month",
+      isPositive: true,
+      backgroundColor: "#FFFBEA",
+    },
+    {
+      title: "Low Stock",
+      value: "18",
+      change: "-3.8% vs last month",
+      isPositive: true,
+      backgroundColor: "#EDE9FE",
+    },
+    {
+      title: "Out of Stock",
+      value: "30",
+      change: "+2.4% vs last month",
+      isPositive: false,
+      backgroundColor: "#FECDD3",
+    },
+    {
+      title: "Total Value",
+      value: "₩156,340,000",
+      change: "+18.6% vs last month",
+      isPositive: true,
+      backgroundColor: "#DCFCE7",
+    },
+  ];
+
   return (
-    <div className="min-h-screen p-6 flex flex-col gap-6">
-      <ProductCatalog />
-      <StockMovementHistory movements={sampleMovements} />
+    <div className="min-h-screen p-6">
+      <PageTitle
+        title="Inventory Management"
+        description="Track and manage your product inventory"
+      />
+
+      <StatsCardsRow stats={inventoryStats} />
+
+      <div className="flex flex-col gap-6">
+        <ProductCatalog />
+        <StockMovementHistory movements={sampleMovements} />
+      </div>
     </div>
   );
 }

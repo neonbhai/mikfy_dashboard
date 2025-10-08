@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { StarsIcon } from "@/components/icons";
 
 interface Invoice {
   id: string;
@@ -83,13 +84,8 @@ export const BillingInvoice: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-[27px]">
         <div className="flex items-center gap-[15px]">
-          <div className="w-[30px] h-[30px] rounded-[5px]">
-            <Image
-              src="/icons/stars-icon.svg"
-              alt="Stars"
-              width={30}
-              height={30}
-            />
+          <div className="w-[30px] h-[30px] rounded-[5px] flex items-center justify-center">
+            <StarsIcon size={30} />
           </div>
           <h2 className="text-[20px] leading-[1em] text-[#151515] font-normal">
             Billing & Invoice

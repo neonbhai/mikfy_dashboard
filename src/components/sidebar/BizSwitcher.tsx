@@ -16,6 +16,7 @@ export default function BizSwitcher({
 }: BizSwitcherProps) {
   const [open, setOpen] = React.useState(false);
   const [mode, setMode] = React.useState<BizMode>(defaultMode);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     const saved = (typeof window !== "undefined" &&
@@ -29,20 +30,43 @@ export default function BizSwitcher({
     console.log("[BizSwitcher] mode", mode);
   }, [mode, onChange]);
 
+  // Close dropdown when clicking outside
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+        console.log("[BizSwitcher] closed by outside click");
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+      console.log("[BizSwitcher] added outside click listener");
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
+
   const select = (m: BizMode) => {
     setMode(m);
     setOpen(false);
+    console.log("[BizSwitcher] selected mode", m);
   };
 
   return (
-    <div className="relative w-full">
+    <div ref={dropdownRef} className="relative w-full">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center justify-between gap-2 rounded-[10px] bg-white text-[#1D222E] px-4 py-2 h-11 w-full"
+        className="flex items-center justify-between gap-2 rounded-[10px] bg-white text-[#1D222E] px-4 py-2 h-11 w-full cursor-pointer"
       >
         <span className="flex items-center gap-2">
-          <HomeIcon className="text-[#1D222E]" />
+          <HomeIcon className="text-[#1D222E]" size={20} />
           <span className="text-sm">{mode.toUpperCase()}</span>
         </span>
         <svg
@@ -68,11 +92,27 @@ export default function BizSwitcher({
               type="button"
               onClick={() => select(m)}
               className={[
-                "w-full text-left px-4 py-2.5 flex items-center gap-2",
+                "w-full text-left px-4 py-2.5 flex items-center justify-between gap-2 cursor-pointer",
                 mode === m ? "bg-[#1D222E]/5 font-medium" : "hover:bg-black/5",
               ].join(" ")}
             >
               <span className="text-sm uppercase">{m}</span>
+              {mode === m && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-[#1D222E]"
+                >
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+              )}
             </button>
           ))}
         </div>

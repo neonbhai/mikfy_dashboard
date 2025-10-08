@@ -1,12 +1,15 @@
 "use client";
 
-import { AlertTriangle, Info, CheckCircle, Filter } from "lucide-react";
+import { AlertTriangle, Info, CheckCircle } from "lucide-react";
+import Link from "next/link";
+import { StarsIcon, FilterIcon } from "@/components/icons";
 
 interface NotificationItem {
   id: string;
   type: "warning" | "info" | "success";
   message: string;
   action: string;
+  route: string;
 }
 
 const notifications: NotificationItem[] = [
@@ -15,18 +18,21 @@ const notifications: NotificationItem[] = [
     type: "warning",
     message: "18 products have low stock levels",
     action: "Review Inventory →",
+    route: "/inventory",
   },
   {
     id: "2",
     type: "info",
     message: "5 B2B orders require approval",
     action: "Review Order →",
+    route: "/orders",
   },
   {
     id: "3",
     type: "success",
     message: "Monthly revenue goal achieved",
     action: "View Analytics →",
+    route: "/analytics",
   },
 ];
 
@@ -57,15 +63,15 @@ export default function NotificationPanel() {
       {/* Header */}
       <div className="flex justify-between items-center mb-[30px]">
         <div className="flex items-center gap-[15px]">
-          <div className="w-[30px] h-[30px] bg-[#1D222E] rounded-[5px] flex items-center justify-center">
-            <span className="text-white text-xl">✨</span>
+          <div className="w-[30px] h-[30px] rounded-[5px] flex items-center justify-center">
+            <StarsIcon size={30} />
           </div>
           <h2 className="text-[20px] font-normal leading-[1em] text-[#151515]">
             Alert & Notification
           </h2>
         </div>
         <button className="w-[30px] h-[30px] flex items-center justify-center">
-          <Filter className="w-5 h-5 text-[#151515]" />
+          <FilterIcon size={30} />
         </button>
       </div>
 
@@ -94,12 +100,12 @@ export default function NotificationPanel() {
                 </div>
 
                 {/* Action Link */}
-                <a
-                  href="#"
+                <Link
+                  href={notification.route}
                   className="text-[14px] font-light leading-[1.3em] text-[#B5200C] hover:underline"
                 >
                   {notification.action}
-                </a>
+                </Link>
               </div>
             </div>
           );

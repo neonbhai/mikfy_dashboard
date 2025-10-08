@@ -20,7 +20,7 @@ export default function SidebarNav() {
         <SidebarItem href="/analytics" label="Analytics" icon={<BrainIcon />} />
         <SidebarItem
           href="/orders"
-          label="Order & Fullfillment"
+          label="Orders & Fullfillment"
           icon={<BellIcon />}
         />
         <SidebarItem

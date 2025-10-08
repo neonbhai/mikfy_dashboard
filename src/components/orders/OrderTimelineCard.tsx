@@ -56,7 +56,7 @@ const OrderTimelineCard: React.FC<OrderTimelineCardProps> = ({
       <div className="flex flex-col gap-5 w-full">
         <div className="w-full">
           <Image
-            src="/temp-figma/flow-graph.svg"
+            src="/temp-figma/order-timeline-progress.svg"
             alt="Order timeline progress"
             width={401}
             height={12}

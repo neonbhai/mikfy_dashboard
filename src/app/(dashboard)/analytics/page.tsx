@@ -4,6 +4,7 @@ import {
   PopularCountriesChart,
 } from "@/components/analytics";
 import { StatsCardsRow } from "@/components/overview";
+import { PageTitle } from "@/components/shared";
 
 export default function AnalyticsPage() {
   const analyticsStats = [
@@ -38,15 +39,12 @@ export default function AnalyticsPage() {
   ];
 
   return (
-    <div className="min-h-screen p-8 bg-[#F8F9FA]">
+    <div className="min-h-screen p-6">
       <div className="max-w-[1400px] mx-auto">
-        {/* Page Title */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-[#1E1B39]">Analytics</h1>
-          <p className="text-[#615E83] mt-2">
-            Performance insights and trends for MIKFY
-          </p>
-        </div>
+        <PageTitle
+          title="Analytics"
+          description="Performance insights and trends for MIKFY"
+        />
 
         {/* Stats Cards */}
         <StatsCardsRow stats={analyticsStats} />

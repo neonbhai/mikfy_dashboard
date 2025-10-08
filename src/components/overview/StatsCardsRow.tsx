@@ -3,7 +3,7 @@ import { StatCard } from "./StatCard";
 interface StatData {
   title: string;
   value: string;
-  change: string;
+  change?: string;
   isPositive?: boolean;
   backgroundColor?: string;
 }

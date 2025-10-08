@@ -10,5 +10,8 @@ export { default as FilterIcon } from "./Filter";
 export { default as SettingsIcon } from "./Settings";
 export { default as StarsIcon } from "./Stars";
 export { default as UserAccountIcon } from "./UserAccount";
-
+export { default as EyeIcon } from "./Eye";
+export { default as ChevronDownIcon } from "./ChevronDown";
+export { TrendUp } from "./TrendUp";
+export { TrendDown } from "./TrendDown";
 
