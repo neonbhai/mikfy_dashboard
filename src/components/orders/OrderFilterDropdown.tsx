@@ -24,9 +24,6 @@ export default function OrderFilterDropdown({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  console.log("OrderFilterDropdown rendered, isOpen:", isOpen);
-  console.log("Current selected filter:", selectedFilter);
-
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -34,7 +31,6 @@ export default function OrderFilterDropdown({
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        console.log("Clicked outside dropdown, closing");
         setIsOpen(false);
       }
     };
@@ -44,12 +40,10 @@ export default function OrderFilterDropdown({
   }, []);
 
   const handleToggle = () => {
-    console.log("Toggling dropdown, current state:", isOpen);
     setIsOpen(!isOpen);
   };
 
   const handleSelect = (value: string, label: string) => {
-    console.log("Filter selected:", label, "value:", value);
     onFilterChange(label);
     setIsOpen(false);
   };

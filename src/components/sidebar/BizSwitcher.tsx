@@ -27,7 +27,6 @@ export default function BizSwitcher({
   React.useEffect(() => {
     if (typeof window !== "undefined") localStorage.setItem("bizMode", mode);
     onChange?.(mode);
-    console.log("[BizSwitcher] mode", mode);
   }, [mode, onChange]);
 
   // Close dropdown when clicking outside
@@ -38,13 +37,11 @@ export default function BizSwitcher({
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setOpen(false);
-        console.log("[BizSwitcher] closed by outside click");
       }
     };
 
     if (open) {
       document.addEventListener("mousedown", handleClickOutside);
-      console.log("[BizSwitcher] added outside click listener");
     }
 
     return () => {
@@ -55,7 +52,6 @@ export default function BizSwitcher({
   const select = (m: BizMode) => {
     setMode(m);
     setOpen(false);
-    console.log("[BizSwitcher] selected mode", m);
   };
 
   return (

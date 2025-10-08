@@ -11,7 +11,6 @@ export function SaveButton({ onSave }: SaveButtonProps) {
   const [showDone, setShowDone] = useState(false);
 
   const handleClick = () => {
-    console.log("Save button clicked");
     setIsSaving(true);
 
     // Call the parent's save handler
@@ -21,12 +20,10 @@ export function SaveButton({ onSave }: SaveButtonProps) {
     setTimeout(() => {
       setIsSaving(false);
       setShowDone(true);
-      console.log("Save completed - showing Done");
 
       // Reset back to "Save Edits" after 2 seconds
       setTimeout(() => {
         setShowDone(false);
-        console.log("Resetting to Save Edits");
       }, 2000);
     }, 500);
   };

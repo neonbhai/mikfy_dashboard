@@ -22,8 +22,6 @@ const AttentionOrders: React.FC<AttentionOrdersProps> = ({
   onFilterClick,
   onReviewOrder,
 }) => {
-  console.log("AttentionOrders rendered with orders:", orders);
-
   return (
     <div className="flex flex-col gap-[10px] p-[23px_30px] bg-white border border-[rgba(21,21,21,0.1)] rounded-[20px] w-full max-w-[521px]">
       <div className="flex flex-col gap-[30px] w-full">

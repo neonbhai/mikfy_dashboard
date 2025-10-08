@@ -5,8 +5,6 @@ import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SearchBar() {
-  console.log("[SearchBar] render");
-
   const router = useRouter();
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,14 +12,12 @@ export default function SearchBar() {
   // Sync with URL params
   useEffect(() => {
     const query = searchParams.get("q") || "";
-    console.log("[SearchBar] URL query changed:", query);
     setSearchQuery(query);
   }, [searchParams]);
 
   // Handle search submission
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("[SearchBar] Search submitted:", searchQuery);
     if (searchQuery.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
     }

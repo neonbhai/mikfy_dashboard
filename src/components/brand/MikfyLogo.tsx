@@ -13,7 +13,6 @@ export default function MikfyLogo({
   className,
   title = "Mikfy",
 }: MikfyLogoProps) {
-  console.log("[MikfyLogo] render", { className });
   return (
     <Link
       href="/overview"

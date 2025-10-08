@@ -25,29 +25,21 @@ export default function AllOrdersList({ orders, onView }: AllOrdersListProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("All orders");
 
-  console.log("AllOrdersList rendered with", orders.length, "orders");
-  console.log("Current search query:", searchQuery);
-  console.log("Current filter:", selectedFilter);
-
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Search query changed:", e.target.value);
     setSearchQuery(e.target.value);
   };
 
   const handleFilterChange = (filter: string) => {
-    console.log("Filter changed to:", filter);
     setSelectedFilter(filter);
   };
 
   // Filter orders based on selected filter and search query
   const filteredOrders = useMemo(() => {
-    console.log("Filtering orders with filter:", selectedFilter);
     let filtered = orders;
 
     // Filter by status
     if (selectedFilter !== "All orders") {
       filtered = filtered.filter((order) => order.status === selectedFilter);
-      console.log("After status filter:", filtered.length, "orders");
     }
 
     // Filter by search query
@@ -58,7 +50,6 @@ export default function AllOrdersList({ orders, onView }: AllOrdersListProps) {
           order.orderId.toLowerCase().includes(query) ||
           order.customerName.toLowerCase().includes(query)
       );
-      console.log("After search filter:", filtered.length, "orders");
     }
 
     return filtered;

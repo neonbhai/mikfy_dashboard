@@ -20,8 +20,6 @@ export default function SidebarItem({
   const pathname = usePathname();
   const isActive = pathname === href;
 
-  console.log("[SidebarItem] render", { href, label, isActive, pathname });
-
   return (
     <Link
       href={href}

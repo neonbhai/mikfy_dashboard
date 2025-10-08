@@ -8,7 +8,6 @@ export default function SettingsIcon({
   size = 24,
   title = "Settings",
 }: IconProps) {
-  console.log("[SettingsIcon] render", { size, className });
   return (
     <IconBase className={className} size={size} title={title}>
       <svg

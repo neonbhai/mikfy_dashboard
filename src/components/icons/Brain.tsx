@@ -8,7 +8,6 @@ export default function BrainIcon({
   size = 24,
   title = "Analytics",
 }: IconProps) {
-  console.log("[BrainIcon] render", { size, className });
   return (
     <IconBase className={className} size={size} title={title}>
       <path

@@ -1,8 +1,6 @@
 import Link from "next/link";
 
 export default function SearchPage() {
-  console.log("[SearchPage] render");
-
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
       {/* Main message */}

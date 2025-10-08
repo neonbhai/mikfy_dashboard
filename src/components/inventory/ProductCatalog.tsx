@@ -46,11 +46,9 @@ const ProductCatalog: React.FC = () => {
           : product
       )
     );
-    console.log(`Toggled product ${id}`);
   };
 
   const handleEdit = (id: string) => {
-    console.log(`Edit product ${id}`);
     // TODO: Implement edit functionality
   };
 

@@ -14,7 +14,6 @@ export function IconBase({
   size = 24,
   title,
 }: React.PropsWithChildren<IconProps>) {
-  console.log("[IconBase] render", { className, size, title });
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

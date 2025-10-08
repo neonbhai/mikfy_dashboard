@@ -8,7 +8,6 @@ export default function UserAccountIcon({
   size = 24,
   title = "User Account",
 }: IconProps) {
-  console.log("[UserAccountIcon] render", { size, className });
   return (
     <IconBase className={className} size={size} title={title}>
       <svg

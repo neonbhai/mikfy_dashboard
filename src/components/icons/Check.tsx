@@ -8,7 +8,6 @@ export default function CheckIcon({
   size = 24,
   title = "Settings",
 }: IconProps) {
-  console.log("[CheckIcon] render", { size, className });
   return (
     <IconBase className={className} size={size} title={title}>
       <path

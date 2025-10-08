@@ -19,7 +19,6 @@ export function CustomDropdown({
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log(`Dropdown ${label} state:`, { isOpen, value });
   }, [isOpen, value, label]);
 
   useEffect(() => {
@@ -29,7 +28,6 @@ export function CustomDropdown({
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
-        console.log(`Dropdown ${label} closed by clicking outside`);
       }
     };
 
@@ -43,7 +41,6 @@ export function CustomDropdown({
   }, [isOpen, label]);
 
   const handleSelect = (option: string) => {
-    console.log(`Dropdown ${label} selected:`, option);
     onChange(option);
     setIsOpen(false);
   };
@@ -58,7 +55,6 @@ export function CustomDropdown({
           type="button"
           onClick={() => {
             setIsOpen(!isOpen);
-            console.log(`Dropdown ${label} toggled:`, !isOpen);
           }}
           className="w-full px-5 py-3.5 h-[52px] bg-[#ECECEC] rounded-lg text-[#1D222E] text-base leading-[1.3] font-normal focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all flex items-center justify-between cursor-pointer hover:bg-[#e0e0e0]"
         >

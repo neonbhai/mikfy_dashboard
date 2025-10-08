@@ -5,7 +5,6 @@ import SidebarHeader from "./SidebarHeader";
 import SidebarNav from "./SidebarNav";
 
 export default function Sidebar() {
-  console.log("[Sidebar] render");
   return (
     <aside className="bg-[#1D222E] text-white w-[276px] min-h-screen flex flex-col">
       <SidebarHeader />

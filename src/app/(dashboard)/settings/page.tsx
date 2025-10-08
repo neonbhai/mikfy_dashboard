@@ -23,12 +23,10 @@ export default function SettingsPage() {
   };
 
   const handleSaveEdits = () => {
-    console.log("Saving user data:", formData);
     // TODO: Implement actual save functionality
   };
 
   const handleResetPassword = () => {
-    console.log("Reset password requested");
     // TODO: Implement password reset functionality
   };
 

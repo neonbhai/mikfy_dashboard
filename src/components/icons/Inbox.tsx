@@ -8,7 +8,6 @@ export default function InboxIcon({
   size = 24,
   title = "Inventory",
 }: IconProps) {
-  console.log("[InboxIcon] render", { size, className });
   return (
     <IconBase className={className} size={size} title={title}>
       <path

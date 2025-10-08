@@ -12,7 +12,6 @@ import {
 } from "../icons";
 
 export default function SidebarNav() {
-  console.log("[SidebarNav] render");
   return (
     <nav className="px-5 py-6 space-y-5">
       <div className="space-y-2">

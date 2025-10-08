@@ -59,8 +59,6 @@ const typeConfig = {
 };
 
 export default function NotificationPanel() {
-  console.log("[NotificationPanel] render");
-
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -97,9 +95,6 @@ export default function NotificationPanel() {
           <button
             className="w-[30px] cursor-pointer h-[30px] flex items-center justify-center hover:opacity-80 transition-opacity"
             onClick={() => {
-              console.log(
-                "[NotificationPanel] Filter clicked, toggling dropdown"
-              );
               setShowFilterDropdown(!showFilterDropdown);
             }}
           >

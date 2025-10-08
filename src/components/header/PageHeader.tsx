@@ -7,8 +7,6 @@ import { BellIcon, SettingsIcon } from "@/components/icons";
 import SearchBar from "./SearchBar";
 
 export default function PageHeader() {
-  console.log("[PageHeader] render");
-
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showBellDropdown, setShowBellDropdown] = useState(false);
   const userDropdownRef = useRef<HTMLDivElement>(null);
@@ -69,7 +67,6 @@ export default function PageHeader() {
               }`}
               aria-label="Notifications"
               onClick={() => {
-                console.log("[PageHeader] Bell clicked, toggling dropdown");
                 setShowBellDropdown(!showBellDropdown);
               }}
             >
@@ -115,9 +112,6 @@ export default function PageHeader() {
               }`}
               aria-label="User account"
               onClick={() => {
-                console.log(
-                  "[PageHeader] User icon clicked, toggling dropdown"
-                );
                 setShowUserDropdown(!showUserDropdown);
               }}
             >

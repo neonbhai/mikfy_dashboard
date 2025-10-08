@@ -8,7 +8,6 @@ export default function HomeIcon({
   size = 24,
   title = "Home",
 }: IconProps) {
-  console.log("[HomeIcon] render", { size, className });
   return (
     <IconBase className={className} size={size} title={title}>
       <path

@@ -23,14 +23,6 @@ const OrderTimelineCard: React.FC<OrderTimelineCardProps> = ({
   amount,
   timestamps,
 }) => {
-  console.log("Render OrderTimelineCard", {
-    orderId,
-    status,
-    customerName,
-    amount,
-    timestamps,
-  });
-
   return (
     <div className="flex flex-col gap-[20px] p-4 bg-white border border-[#F3F3EE] rounded-[10px] w-full py-5">
       <div className="flex flex-col gap-[5px] w-full">

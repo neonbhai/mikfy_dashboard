@@ -8,7 +8,6 @@ export default function BellIcon({
   size = 24,
   title = "Notifications",
 }: IconProps) {
-  console.log("[BellIcon] render", { size, className });
   return (
     <IconBase className={className} size={size} title={title}>
       <svg

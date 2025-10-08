@@ -33,15 +33,6 @@ export default function SalesByChannelChart() {
   const percentOfAxis = (value: number) =>
     Math.min(100, (value / axisMax) * 100);
 
-  // Debug logs for visibility during development
-  // eslint-disable-next-line no-console
-  console.log(
-    "[SalesByChannel] activeTab:",
-    activeTab,
-    "values:",
-    numericValues
-  );
-
   return (
     <div className="w-full max-w-[510px] bg-white border border-[rgba(21,21,21,0.1)] rounded-[20px] p-6">
       <AnalyticsCardHeader
