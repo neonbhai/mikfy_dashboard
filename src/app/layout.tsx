@@ -14,8 +14,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Dashboard for MIKFY",
+  title: "MIKFY Dashboard",
+  description:
+    "Dashboard for MIKFY - Manage your Korean beauty products business",
+  icons: {
+    icon: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        url: "/favicon-black.ico",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        url: "/favicon-white.ico",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        rel: "icon",
+        type: "image/svg+xml",
+        url: "/icon.svg",
+      },
+    ],
+    // Add fallback for browsers that don't support media queries
+    shortcut: "/favicon-white.ico",
+  },
 };
 
 export default function RootLayout({
