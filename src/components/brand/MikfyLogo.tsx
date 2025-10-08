@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 type MikfyLogoProps = {
   className?: string;
@@ -14,14 +15,19 @@ export default function MikfyLogo({
 }: MikfyLogoProps) {
   console.log("[MikfyLogo] render", { className });
   return (
-    <div className={className} aria-label={title} role="img">
+    <Link
+      href="/overview"
+      className={`block ${className || ""}`}
+      aria-label={title}
+    >
       <Image
         src="/brand/mikfy-logo.svg"
         alt={title}
         width={107}
         height={47}
         priority
+        className="cursor-pointer transition-opacity hover:opacity-80"
       />
-    </div>
+    </Link>
   );
 }

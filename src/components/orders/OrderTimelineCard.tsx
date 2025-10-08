@@ -32,7 +32,7 @@ const OrderTimelineCard: React.FC<OrderTimelineCardProps> = ({
   });
 
   return (
-    <div className="flex flex-col gap-[20px] p-4 bg-white border border-[#F3F3EE] rounded-[10px] w-full max-w-[503px]">
+    <div className="flex flex-col gap-[20px] p-4 bg-white border border-[#F3F3EE] rounded-[10px] w-full py-5">
       <div className="flex flex-col gap-[5px] w-full">
         <div className="flex items-center justify-between gap-10 w-full">
           <span className="text-[#151515] font-normal text-xl leading-none">

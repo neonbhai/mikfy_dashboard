@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { StarsIcon } from "@/components/icons";
 
 interface Order {
@@ -48,12 +49,12 @@ export default function RecentOrders() {
             Recent Orders
           </h2>
         </div>
-        <a
-          href="#"
+        <Link
+          href="/orders"
           className="text-[16px] font-normal leading-[1em] text-black hover:underline"
         >
           See All
-        </a>
+        </Link>
       </div>
 
       {/* Orders List */}
