@@ -163,11 +163,13 @@ export default function OrdersPage() {
     // TODO: Implement filter logic
   };
 
-  const handleReviewOrder = (orderId: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleReviewOrder = (_orderId: string) => {
     // TODO: Implement order review functionality
   };
 
-  const handleViewOrder = (orderId: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleViewOrder = (_orderId: string) => {
     // TODO: Implement view order details functionality
   };
 

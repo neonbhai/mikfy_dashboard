@@ -4,10 +4,12 @@ import { FilterButton } from "@/components/shared";
 
 interface OrdersHeaderProps {
   title?: string;
+  onFilterClick?: () => void;
 }
 
 const OrdersHeader: React.FC<OrdersHeaderProps> = ({
   title = "Requires Attention",
+  onFilterClick,
 }) => {
   return (
     <div className="flex justify-between items-center gap-16 w-full">
@@ -20,7 +22,7 @@ const OrdersHeader: React.FC<OrdersHeaderProps> = ({
       </div>
 
       {/* Right side - Filter icon */}
-      <FilterButton />
+      <FilterButton onClick={onFilterClick} />
     </div>
   );
 };

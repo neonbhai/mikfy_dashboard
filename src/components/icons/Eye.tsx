@@ -1,6 +1,7 @@
 import { IconProps } from "./IconBase";
 
-export default function EyeIcon(props: IconProps) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function EyeIcon(_props: IconProps) {
   return (
     <svg
       width="24"

@@ -14,12 +14,12 @@ interface ChannelData {
 export default function SalesByChannelChart() {
   const [activeTab, setActiveTab] = useState<TabOption>("Annually");
 
-  const channels: ChannelData[] = [
+  const channels: ChannelData[] = useMemo(() => [
     { name: "Instagram", value: "121,799", barColor: "#4A3AFF" },
     { name: "Facebook", value: "50,799", barColor: "#962DFF" },
     { name: "Twitter", value: "25,567", barColor: "#E0C6FD" },
     { name: "Google", value: "5,789", barColor: "#C6D2FD" },
-  ];
+  ], []);
 
   const numericValues = useMemo(
     () => channels.map((c) => Number(c.value.replace(/,/g, ""))),

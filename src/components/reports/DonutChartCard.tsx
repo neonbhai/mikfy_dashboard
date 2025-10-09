@@ -15,43 +15,8 @@ export default function DonutChartCard() {
     { name: "Rejected", value: 590, color: "#D9E6FF" }, // pale blue
   ];
 
-  const total = slices.reduce((s, x) => s + x.value, 0);
-
-  // Render label inside slice: percentage (rounded)
-  const renderLabel = ({
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    percent,
-  }: any) => {
-    const RAD = Math.PI / 180;
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.55;
-    const x = cx + radius * Math.cos(-midAngle * RAD);
-    const y = cy + radius * Math.sin(-midAngle * RAD);
-
-    const pct = Math.round(percent * 100);
-    // only show if slice is reasonably big
-    if (pct === 0) return null;
-
-    return (
-      <text
-        x={x}
-        y={y}
-        fill="#fff"
-        fontSize={14}
-        fontWeight={700}
-        textAnchor="middle"
-        dominantBaseline="central"
-        pointerEvents="none"
-      >
-        {pct}%
-      </text>
-    );
-  };
-
   // Custom active shape for hover effect - scales the slice outward
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderActiveShape = (props: any) => {
     const {
       cx,
@@ -61,7 +26,6 @@ export default function DonutChartCard() {
       startAngle,
       endAngle,
       fill,
-      payload,
       percent,
       cornerRadius,
     } = props;

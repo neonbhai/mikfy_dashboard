@@ -48,7 +48,8 @@ const ProductCatalog: React.FC = () => {
     );
   };
 
-  const handleEdit = (id: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleEdit = (_id: string) => {
     // TODO: Implement edit functionality
   };
 

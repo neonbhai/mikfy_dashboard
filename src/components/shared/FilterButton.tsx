@@ -3,7 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import { FilterIcon } from "@/components/icons";
 
-export default function FilterButton() {
+interface FilterButtonProps {
+  onClick?: () => void;
+}
+
+export default function FilterButton({ onClick }: FilterButtonProps) {
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -24,13 +28,16 @@ export default function FilterButton() {
     };
   }, []);
 
+  const handleClick = () => {
+    setShowFilterDropdown(!showFilterDropdown);
+    onClick?.();
+  };
+
   return (
     <div className="relative" ref={filterDropdownRef}>
       <button
         className="w-[30px] cursor-pointer h-[30px] flex items-center justify-center hover:opacity-80 transition-opacity"
-        onClick={() => {
-          setShowFilterDropdown(!showFilterDropdown);
-        }}
+        onClick={handleClick}
         aria-label="Filter"
       >
         <FilterIcon size={30} />

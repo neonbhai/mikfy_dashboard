@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 
 export type IconProps = {
   className?: string;
@@ -10,9 +9,12 @@ export type IconProps = {
 };
 
 export default function GraphIcon({
-  className,
-  size = 24,
-  title = "Reports",
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  className: _className,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  size: _size = 24,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  title: _title = "Reports",
 }: IconProps) {
   return (
     <svg

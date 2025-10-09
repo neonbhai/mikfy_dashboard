@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import { ChevronDownIcon } from "@/components/icons";
-import { OrderStatus } from "./OrderListCard";
 
 interface OrderFilterDropdownProps {
   selectedFilter: string;

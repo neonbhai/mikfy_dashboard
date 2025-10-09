@@ -17,6 +17,7 @@ export default function TabFilter<T extends string>({
   const [direction, setDirection] = useState<"left" | "right">("right");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+  const prevLeftRef = useRef(0);
 
   useEffect(() => {
     const activeIndex = options.indexOf(activeTab);
@@ -29,12 +30,13 @@ export default function TabFilter<T extends string>({
       const width = buttonRect.width;
 
       // Determine direction based on indicator movement
-      if (left > indicatorStyle.left) {
+      if (left > prevLeftRef.current) {
         setDirection("right");
-      } else if (left < indicatorStyle.left) {
+      } else if (left < prevLeftRef.current) {
         setDirection("left");
       }
 
+      prevLeftRef.current = left;
       setIndicatorStyle({ left, width });
     }
   }, [activeTab, options]);

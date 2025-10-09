@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProps } from "./IconBase";
 
-const Filter: React.FC<IconProps> = ({ className, size = 30, title }) => {
+const Filter: React.FC<IconProps> = () => {
   return (
     <svg
       width="30"
