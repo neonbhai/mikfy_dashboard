@@ -8,11 +8,13 @@ type BizMode = "b2b" | "b2c";
 type BizSwitcherProps = {
   defaultMode?: BizMode;
   onChange?: (mode: BizMode) => void;
+  isCollapsed?: boolean;
 };
 
 export default function BizSwitcher({
   defaultMode = "b2c",
   onChange,
+  isCollapsed = false,
 }: BizSwitcherProps) {
   const [open, setOpen] = React.useState(false);
   const [mode, setMode] = React.useState<BizMode>(defaultMode);
@@ -54,12 +56,25 @@ export default function BizSwitcher({
     setOpen(false);
   };
 
+  if (isCollapsed) {
+    return (
+      <div className="relative w-full flex justify-center">
+        <div
+          className="w-10 h-10 flex items-center justify-center rounded-[10px] bg-white text-[#1D222E]"
+          aria-label={`Business mode: ${mode.toUpperCase()}`}
+        >
+          <HomeIcon className="text-[#1D222E]" size={20} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div ref={dropdownRef} className="relative w-full">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center justify-between gap-2 rounded-[10px] bg-white text-[#1D222E] px-4 py-2 h-11 w-full cursor-pointer"
+        className="flex items-center justify-between gap-2 rounded-[10px] bg-white text-[#1D222E] px-4 py-2 h-11 w-full cursor-pointer hover:opacity-80 transition-opacity"
       >
         <span className="flex items-center gap-2">
           <HomeIcon className="text-[#1D222E]" size={20} />

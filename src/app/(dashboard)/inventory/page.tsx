@@ -52,7 +52,7 @@ export default function InventoryPage() {
     },
     {
       title: "Total Value",
-      value: "₩156,340,000",
+      value: "₩156,340",
       change: "+18.6% vs last month",
       isPositive: true,
       backgroundColor: "#DCFCE7",

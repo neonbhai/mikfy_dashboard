@@ -1,4 +1,5 @@
-import { StarsIcon, FilterIcon } from "@/components/icons";
+import { StarsIcon } from "@/components/icons";
+import { FilterButton } from "@/components/shared";
 import StockMovementItem from "./StockMovementItem";
 
 interface StockMovement {
@@ -26,12 +27,7 @@ export default function StockMovementHistory({
             Stock Movement History
           </h2>
         </div>
-        <button
-          className="w-[30px] h-[30px] flex items-center justify-center"
-          aria-label="Filter stock movements"
-        >
-          <FilterIcon className="w-full h-full text-white" />
-        </button>
+        <FilterButton />
       </div>
 
       {/* Movement List */}

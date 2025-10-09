@@ -26,7 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   onEdit,
 }) => {
   return (
-    <div className=" bg-white border border-[#F3F3EE] rounded-[10px] p-4 flex items-center justify-between gap-[458px]">
+    <div className=" bg-white border border-[#F3F3EE] rounded-[10px] p-4 flex items-center justify-between ">
       <div className="flex items-center gap-[18px]">
         <ProductImage src={product.image} alt={product.name} />
         <ProductDetails

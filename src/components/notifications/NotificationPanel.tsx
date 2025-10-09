@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
 import { AlertTriangle, Info, CheckCircle } from "lucide-react";
 import Link from "next/link";
-import { StarsIcon, FilterIcon } from "@/components/icons";
+import { StarsIcon } from "@/components/icons";
+import { FilterButton } from "@/components/shared";
 
 interface NotificationItem {
   id: string;
@@ -59,26 +59,6 @@ const typeConfig = {
 };
 
 export default function NotificationPanel() {
-  const [showFilterDropdown, setShowFilterDropdown] = useState(false);
-  const filterDropdownRef = useRef<HTMLDivElement>(null);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        filterDropdownRef.current &&
-        !filterDropdownRef.current.contains(event.target as Node)
-      ) {
-        setShowFilterDropdown(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
     <div className="bg-white rounded-[20px] border-[0.5px] border-[rgba(21,21,21,0.1)] p-[23px_30px]">
       {/* Header */}
@@ -91,26 +71,7 @@ export default function NotificationPanel() {
             Alert & Notification
           </h2>
         </div>
-        <div className="relative" ref={filterDropdownRef}>
-          <button
-            className="w-[30px] cursor-pointer h-[30px] flex items-center justify-center hover:opacity-80 transition-opacity"
-            onClick={() => {
-              setShowFilterDropdown(!showFilterDropdown);
-            }}
-          >
-            <FilterIcon size={30} />
-          </button>
-
-          {showFilterDropdown && (
-            <div className="absolute right-0 top-[42px] w-[200px] bg-white rounded-[15px] border-[0.5px] border-[rgba(21,21,21,0.1)] shadow-[0_4px_20px_rgba(0,0,0,0.08)] z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-              <div className="p-5">
-                <p className="text-[16px] font-normal leading-[1.4] text-[#151515] text-center">
-                  Connect Shopify
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
+        <FilterButton />
       </div>
 
       {/* Notifications List */}

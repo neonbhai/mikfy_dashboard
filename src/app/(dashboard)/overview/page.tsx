@@ -8,7 +8,7 @@ export default function OverviewPage() {
   const stats = [
     {
       title: "Total Revenue",
-      value: "₩24,580,000",
+      value: "₩2,245,800",
       change: "+12.5% vs last month",
       isPositive: true,
       backgroundColor: "#E4F5FF",

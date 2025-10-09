@@ -13,20 +13,18 @@ interface Order {
 
 interface AttentionOrdersProps {
   orders?: Order[];
-  onFilterClick?: () => void;
   onReviewOrder?: (orderId: string) => void;
 }
 
 const AttentionOrders: React.FC<AttentionOrdersProps> = ({
   orders = [],
-  onFilterClick,
   onReviewOrder,
 }) => {
   return (
     <div className="flex flex-col gap-[10px] p-[23px_30px] bg-white border border-[rgba(21,21,21,0.1)] rounded-[20px] w-full max-w-[521px]">
       <div className="flex flex-col gap-[30px] w-full">
         {/* Header */}
-        <OrdersHeader onFilterClick={onFilterClick} />
+        <OrdersHeader />
 
         {/* Orders List */}
         <div className="flex flex-col gap-[15px] w-full">

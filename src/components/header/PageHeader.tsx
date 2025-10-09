@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BellIcon, SettingsIcon } from "@/components/icons";
 import SearchBar from "./SearchBar";
+import SidebarToggle from "./SidebarToggle";
 
 export default function PageHeader() {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
@@ -41,17 +42,7 @@ export default function PageHeader() {
         {/* Left section: Toggle and Search */}
         <div className="flex items-center gap-10">
           {/* Sidebar Toggle */}
-          <button
-            className="w-10 h-10 flex items-center justify-center hover:opacity-80 transition-opacity"
-            aria-label="Toggle sidebar"
-          >
-            <Image
-              src="/icons/sidebar-toggle.svg"
-              alt="Toggle sidebar"
-              width={30}
-              height={30}
-            />
-          </button>
+          <SidebarToggle />
 
           {/* Search Bar */}
           <SearchBar />

@@ -17,20 +17,20 @@ export function StatCard({
 }: StatCardProps) {
   return (
     <div
-      className="rounded-[10px] p-7 flex flex-col justify-center gap-2.5 h-[169px]"
+      className="rounded-[10px] p-4 sm:p-5  xl:p-7 flex flex-col justify-center gap-2 sm:gap-2.5 min-h-[140px] sm:min-h-[155px] md:min-h-[169px] overflow-hidden"
       style={{ backgroundColor }}
     >
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-6 sm:gap-8 md:gap-10">
         {/* Title */}
         <div className="flex items-center gap-1.5">
-          <span className="text-[20px] font-medium leading-[1em] text-black">
+          <span className="text-base sm:text-lg md:text-[20px] font-medium leading-[1em] text-black">
             {title}
           </span>
         </div>
 
         {/* Value and Change */}
         <div className="flex flex-col gap-[7px]">
-          <span className="text-[32px] font-normal leading-[1em] text-black">
+          <span className="text-2xl sm:text-[28px] md:text-[32px] font-normal leading-[1em] text-black">
             {value}
           </span>
 
@@ -43,7 +43,7 @@ export function StatCard({
                 <TrendDown width={14} height={10} />
               )}
               <span
-                className="text-[16px] font-normal leading-[1em]"
+                className="text-sm sm:text-[15px] md:text-[16px] font-normal leading-[1em]"
                 style={{ color: isPositive ? "#00961B" : "#960000" }}
               >
                 {change}

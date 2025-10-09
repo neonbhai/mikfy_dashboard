@@ -1,5 +1,6 @@
 import React from "react";
-import { StarsIcon, FilterIcon } from "@/components/icons";
+import { StarsIcon } from "@/components/icons";
+import { FilterButton } from "@/components/shared";
 
 const InventoryHeader: React.FC = () => {
   return (
@@ -11,12 +12,7 @@ const InventoryHeader: React.FC = () => {
         </h2>
       </div>
 
-      <button
-        className="flex-shrink-0 hover:opacity-80 transition-opacity"
-        aria-label="Filter products"
-      >
-        <FilterIcon size={30} />
-      </button>
+      <FilterButton />
     </div>
   );
 };
