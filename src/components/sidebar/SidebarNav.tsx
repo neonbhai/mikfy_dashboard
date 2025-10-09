@@ -18,7 +18,7 @@ type SidebarNavProps = {
 export default function SidebarNav({ isCollapsed = false }: SidebarNavProps) {
   return (
     <nav
-      className={`py-6 space-y-5 transition-all duration-300 ${
+      className={`py-6 space-y-5 transition-all duration-300 flex-1 overflow-y-auto ${
         isCollapsed ? "px-3" : "px-5"
       }`}
     >

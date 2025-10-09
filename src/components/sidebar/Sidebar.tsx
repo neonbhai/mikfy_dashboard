@@ -12,7 +12,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={`bg-[#1D222E] text-white min-h-screen flex flex-col transition-all duration-300 ease-in-out overflow-hidden ${
+      className={`bg-[#1D222E] text-white h-full flex flex-col transition-all duration-300 ease-in-out overflow-hidden ${
         isCollapsed ? "w-[80px]" : "w-[276px]"
       }`}
     >

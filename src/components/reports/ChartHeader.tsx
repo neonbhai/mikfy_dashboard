@@ -12,21 +12,23 @@ interface ChartHeaderProps {
   growthPercentage?: number;
 }
 
+// Move tabs constant outside component to prevent recreation on every render
+const TABS: TabOption[] = ["Daily", "Weekly", "Annually"];
+
 export default function ChartHeader({
   totalSales,
   activeTab,
   onTabChange,
-  year = "2022",
+  year = "2025",
   growthPercentage = 1.3,
 }: ChartHeaderProps) {
-  const tabs: TabOption[] = ["Daily", "Weekly", "Annually"];
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const [direction, setDirection] = useState<"left" | "right">("right");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const activeIndex = tabs.indexOf(activeTab);
+    const activeIndex = TABS.indexOf(activeTab);
     const activeRef = tabRefs.current[activeIndex];
     const containerRect = containerRef.current?.getBoundingClientRect();
 
@@ -35,16 +37,19 @@ export default function ChartHeader({
       const left = buttonRect.left - containerRect.left;
       const width = buttonRect.width;
 
-      // Determine direction based on indicator movement
-      if (left > indicatorStyle.left) {
-        setDirection("right");
-      } else if (left < indicatorStyle.left) {
-        setDirection("left");
-      }
+      // Only update if position or width has changed
+      if (left !== indicatorStyle.left || width !== indicatorStyle.width) {
+        // Determine direction based on indicator movement
+        if (left > indicatorStyle.left) {
+          setDirection("right");
+        } else if (left < indicatorStyle.left) {
+          setDirection("left");
+        }
 
-      setIndicatorStyle({ left, width });
+        setIndicatorStyle({ left, width });
+      }
     }
-  }, [activeTab, tabs]);
+  }, [activeTab, indicatorStyle.left, indicatorStyle.width]);
 
   return (
     <div className="flex justify-between items-start mb-8">
@@ -76,7 +81,7 @@ export default function ChartHeader({
         />
 
         <div className="flex gap-1 relative">
-          {tabs.map((tab, index) => (
+          {TABS.map((tab, index) => (
             <button
               key={tab}
               ref={(el) => {

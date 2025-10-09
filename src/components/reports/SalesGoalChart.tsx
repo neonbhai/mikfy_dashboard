@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   AreaChart,
   Area,
@@ -10,22 +10,31 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { ChevronDownIcon } from "@/components/icons";
 
-// Chart data matching Figma design - all periods
-const chartData = [
-  { period: "1 - 10 Aug", value: 45, amount: 18340 },
-  { period: "11 - 20 Aug", value: 62, amount: 20150 },
-  { period: "21 - 30 Aug", value: 75, amount: 23849 },
-  { period: "1 - 10 Nov", value: 38, amount: 15200 },
-];
+// Data for different time periods with steep exponential growth
+const dataByPeriod = {
+  Month: [
+    { period: "1 - 10 Aug", value: 18, amount: 12200 },
+    { period: "11 - 20 Aug", value: 35, amount: 16800 },
+    { period: "21 - 30 Aug", value: 62, amount: 23500 },
+    { period: "1 - 10 Nov", value: 95, amount: 34000 },
+  ],
+  Week: [
+    { period: "Week 1", value: 15, amount: 10500 },
+    { period: "Week 2", value: 32, amount: 15200 },
+    { period: "Week 3", value: 58, amount: 22800 },
+    { period: "Week 4", value: 92, amount: 33500 },
+  ],
+  Year: [
+    { period: "Q1", value: 20, amount: 11000 },
+    { period: "Q2", value: 38, amount: 16500 },
+    { period: "Q3", value: 65, amount: 25000 },
+    { period: "Q4", value: 98, amount: 38000 },
+  ],
+};
 
-// Active/highlighted data - first 3 periods only
-const activeData = [
-  { period: "1 - 10 Aug", value: 45, amount: 18340 },
-  { period: "11 - 20 Aug", value: 62, amount: 20150 },
-  { period: "21 - 30 Aug", value: 75, amount: 23849 },
-  { period: "1 - 10 Nov", value: null, amount: null }, // null to end the line
-];
+type PeriodType = keyof typeof dataByPeriod;
 
 interface TooltipProps {
   active?: boolean;
@@ -54,10 +63,42 @@ const CustomTooltip = ({ active, payload }: TooltipProps) => {
 };
 
 export default function SalesGoalChart() {
-  const [selectedPeriod, setSelectedPeriod] = useState<string>("Month");
+  const [selectedPeriod, setSelectedPeriod] = useState<PeriodType>("Month");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Calculate current percentage (from latest data point with highest value)
-  const currentPercentage = chartData[2].value; // 21-30 Aug is active at 75%
+  const periodOptions: PeriodType[] = ["Month", "Week", "Year"];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Get data for selected period
+  const chartData = dataByPeriod[selectedPeriod];
+
+  // Active data - first 3 periods only
+  const activeData = [
+    ...chartData.slice(0, 3),
+    { ...chartData[3], value: null, amount: null }, // null to end the line
+  ];
+
+  // Calculate current percentage (from 3rd data point - currently active)
+  const currentPercentage = chartData[2].value;
+
+  console.log("SalesGoalChart - Selected period:", selectedPeriod);
+  console.log("SalesGoalChart - Chart data:", chartData);
+  console.log("SalesGoalChart - Current percentage:", currentPercentage);
 
   return (
     <div className="bg-white rounded-[20px] border border-[rgba(21,21,21,0.1)] p-9 w-full">
@@ -73,15 +114,45 @@ export default function SalesGoalChart() {
         </div>
 
         {/* Dropdown Selector */}
-        <button className="flex items-center gap-6 px-4 py-2.5 bg-[#F8F8FF] rounded-[20px] hover:bg-[#F0F0FF] transition-colors">
-          <span className="text-[#615E83] text-sm font-normal">
-            {selectedPeriod}
-          </span>
-          <div className="flex flex-col gap-0.5">
-            <div className="w-1.5 h-1.5 bg-[#615E83] rounded-sm rotate-45 -translate-y-0.5" />
-            <div className="w-1.5 h-1.5 bg-[#615E83] rounded-sm rotate-45 translate-y-0.5" />
-          </div>
-        </button>
+        <div className="relative" ref={dropdownRef}>
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="flex items-center gap-3 px-4 py-2.5 bg-[#F8F8FF] rounded-[20px] hover:bg-[#F0F0FF] transition-colors"
+          >
+            <span className="text-[#615E83] text-sm font-normal">
+              {selectedPeriod}
+            </span>
+            <ChevronDownIcon
+              size={16}
+              className={`text-[#615E83] transition-transform duration-200 ${
+                isDropdownOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+
+          {/* Dropdown Menu */}
+          {isDropdownOpen && (
+            <div className="absolute right-0 mt-2 w-32 bg-white rounded-[16px] shadow-lg border border-[rgba(21,21,21,0.1)] py-2 z-10">
+              {periodOptions.map((option) => (
+                <button
+                  key={option}
+                  onClick={() => {
+                    setSelectedPeriod(option);
+                    setIsDropdownOpen(false);
+                    console.log("Period changed to:", option);
+                  }}
+                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                    selectedPeriod === option
+                      ? "bg-[#F8F8FF] text-[#1D222E] font-medium"
+                      : "text-[#615E83] hover:bg-[#F8F8FF]"
+                  }`}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Divider */}
@@ -100,7 +171,7 @@ export default function SalesGoalChart() {
           <AreaChart
             data={chartData}
             margin={{ top: 10, right: 0, left: -20, bottom: 0 }}
-            style={{ outline: 'none' }}
+            style={{ outline: "none" }}
           >
             <defs>
               {/* Base gradient - lighter colors for all data */}

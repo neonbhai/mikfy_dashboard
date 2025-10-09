@@ -124,9 +124,8 @@ export default function DonutChartCard() {
               endAngle={-270}
               paddingAngle={6} // space between segments
               cornerRadius={10} // rounded ends
-              label={renderLabel}
               labelLine={false} // Disable connector lines
-              activeShape={renderActiveShape} // Scale slice on hover
+              activeShape={renderActiveShape} // Scale slice on hover - shows label on hover
             >
               {slices.map((entry, idx) => (
                 <Cell key={`cell-${idx}`} fill={entry.color} />

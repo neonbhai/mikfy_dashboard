@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { BellIcon, SettingsIcon } from "@/components/icons";
 import SearchBar from "./SearchBar";
 import SidebarToggle from "./SidebarToggle";
@@ -10,31 +9,44 @@ import SidebarToggle from "./SidebarToggle";
 export default function PageHeader() {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showBellDropdown, setShowBellDropdown] = useState(false);
+  const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
   const userDropdownRef = useRef<HTMLDivElement>(null);
   const bellDropdownRef = useRef<HTMLDivElement>(null);
+  const settingsDropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        userDropdownRef.current &&
-        !userDropdownRef.current.contains(event.target as Node)
-      ) {
+      const target = event.target as Node;
+
+      // Check if click is outside all dropdowns
+      const isOutsideUser =
+        userDropdownRef.current && !userDropdownRef.current.contains(target);
+      const isOutsideBell =
+        bellDropdownRef.current && !bellDropdownRef.current.contains(target);
+      const isOutsideSettings =
+        settingsDropdownRef.current &&
+        !settingsDropdownRef.current.contains(target);
+
+      if (isOutsideUser) {
         setShowUserDropdown(false);
       }
-      if (
-        bellDropdownRef.current &&
-        !bellDropdownRef.current.contains(event.target as Node)
-      ) {
+      if (isOutsideBell) {
         setShowBellDropdown(false);
+      }
+      if (isOutsideSettings) {
+        setShowSettingsDropdown(false);
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    if (showUserDropdown || showBellDropdown || showSettingsDropdown) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [showUserDropdown, showBellDropdown, showSettingsDropdown]);
 
   return (
     <header className="px-4 py-4">
@@ -59,13 +71,15 @@ export default function PageHeader() {
               aria-label="Notifications"
               onClick={() => {
                 setShowBellDropdown(!showBellDropdown);
+                setShowSettingsDropdown(false);
+                setShowUserDropdown(false);
               }}
             >
               <BellIcon size={24} />
             </button>
 
             {showBellDropdown && (
-              <div className="absolute right-0 top-[52px] w-[280px] bg-white rounded-[15px] border-[0.5px] border-[rgba(21,21,21,0.1)] shadow-[0_4px_20px_rgba(0,0,0,0.08)] z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute right-0 top-[52px] w-[280px] bg-white rounded-[15px] border-[0.5px] border-[rgba(21,21,21,0.1)] shadow-[0_4px_20px_rgba(0,0,0,0.08)] z-50 animate-in fade-in slide-in-from-top-2 duration-100">
                 <div className="p-5">
                   <h3 className="text-[18px] font-normal leading-[1em] text-[#151515] mb-4">
                     Notifications
@@ -83,15 +97,40 @@ export default function PageHeader() {
             )}
           </div>
 
-          {/* Settings Button */}
-          <Link href="/settings">
+          {/* Settings Button with Dropdown */}
+          <div className="relative" ref={settingsDropdownRef}>
             <button
-              className="w-10 h-10 flex items-center justify-center hover:opacity-80 transition-opacity"
+              className={`w-10 h-10 flex items-center justify-center hover:opacity-80 transition-all ${
+                showSettingsDropdown ? "opacity-80" : ""
+              }`}
               aria-label="Settings"
+              onClick={() => {
+                setShowSettingsDropdown(!showSettingsDropdown);
+                setShowBellDropdown(false);
+                setShowUserDropdown(false);
+              }}
             >
               <SettingsIcon size={24} />
             </button>
-          </Link>
+
+            {showSettingsDropdown && (
+              <div className="absolute right-0 top-[52px] w-[280px] bg-white rounded-[15px] border-[0.5px] border-[rgba(21,21,21,0.1)] shadow-[0_4px_20px_rgba(0,0,0,0.08)] z-50 animate-in fade-in slide-in-from-top-2 duration-100">
+                <div className="p-5">
+                  <h3 className="text-[18px] font-normal leading-[1em] text-[#151515] mb-4">
+                    Settings
+                  </h3>
+                  <div className="flex flex-col items-center justify-center py-8">
+                    <div className="w-12 h-12 rounded-full bg-[#F3F3EE] flex items-center justify-center mb-3">
+                      <SettingsIcon size={24} />
+                    </div>
+                    <p className="text-[14px] font-normal leading-[1.4] text-[#737373] text-center">
+                      Quick settings go here
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* User Account Avatar with Dropdown */}
           <div className="relative" ref={userDropdownRef}>
@@ -104,6 +143,8 @@ export default function PageHeader() {
               aria-label="User account"
               onClick={() => {
                 setShowUserDropdown(!showUserDropdown);
+                setShowBellDropdown(false);
+                setShowSettingsDropdown(false);
               }}
             >
               <Image
@@ -116,7 +157,7 @@ export default function PageHeader() {
             </button>
 
             {showUserDropdown && (
-              <div className="absolute right-0 top-[52px] w-[280px] bg-white rounded-[15px] border-[0.5px] border-[rgba(21,21,21,0.1)] shadow-[0_4px_20px_rgba(0,0,0,0.08)] z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute right-0 top-[52px] w-[280px] bg-white rounded-[15px] border-[0.5px] border-[rgba(21,21,21,0.1)] shadow-[0_4px_20px_rgba(0,0,0,0.08)] z-50 animate-in fade-in slide-in-from-top-2 duration-100">
                 <div className="p-5">
                   <div className="flex items-center gap-3 mb-5 pb-4 border-b border-[#F3F3EE]">
                     <Image
