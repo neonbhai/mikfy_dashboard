@@ -8,8 +8,6 @@ import SidebarNav from "./SidebarNav";
 export default function Sidebar() {
   const { isCollapsed } = useSidebar();
 
-  console.log("Sidebar rendering, isCollapsed:", isCollapsed);
-
   return (
     <aside
       className={`bg-[#1D222E] text-white h-full flex flex-col transition-all duration-300 ease-in-out overflow-hidden ${

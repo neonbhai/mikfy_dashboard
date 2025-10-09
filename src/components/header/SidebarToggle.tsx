@@ -8,7 +8,6 @@ export default function SidebarToggle() {
   const { toggleSidebar, isCollapsed } = useSidebar();
 
   const handleClick = () => {
-    console.log("SidebarToggle clicked");
     toggleSidebar();
   };
 

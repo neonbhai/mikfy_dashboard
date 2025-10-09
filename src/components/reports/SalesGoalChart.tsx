@@ -96,10 +96,6 @@ export default function SalesGoalChart() {
   // Calculate current percentage (from 3rd data point - currently active)
   const currentPercentage = chartData[2].value;
 
-  console.log("SalesGoalChart - Selected period:", selectedPeriod);
-  console.log("SalesGoalChart - Chart data:", chartData);
-  console.log("SalesGoalChart - Current percentage:", currentPercentage);
-
   return (
     <div className="bg-white rounded-[20px] border border-[rgba(21,21,21,0.1)] p-9 w-full">
       {/* Card Header */}
@@ -139,7 +135,6 @@ export default function SalesGoalChart() {
                   onClick={() => {
                     setSelectedPeriod(option);
                     setIsDropdownOpen(false);
-                    console.log("Period changed to:", option);
                   }}
                   className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
                     selectedPeriod === option
