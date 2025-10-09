@@ -56,9 +56,11 @@ export default function RootLayout({
       >
         <DesktopOnly />
         <SidebarProvider>
-          <div className="min-h-screen flex max-lg:hidden">
+          <div className="h-screen flex max-lg:hidden overflow-hidden">
             <Sidebar />
-            <main className="flex-1 bg-[#FAFAFC]">{children}</main>
+            <main className="flex-1 bg-[#FAFAFC] overflow-y-auto">
+              {children}
+            </main>
           </div>
         </SidebarProvider>
       </body>

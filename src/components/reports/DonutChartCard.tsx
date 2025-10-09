@@ -1,13 +1,6 @@
 "use client";
 import React from "react";
-import {
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  Sector,
-} from "recharts";
+import { ResponsiveContainer, PieChart, Pie, Cell, Sector } from "recharts";
 
 /**
  * DonutChartCard
@@ -139,16 +132,6 @@ export default function DonutChartCard() {
                 <Cell key={`cell-${idx}`} fill={entry.color} />
               ))}
             </Pie>
-            <Tooltip
-              formatter={(value) => [value, "count"]}
-              itemStyle={{ color: "#111827", fontWeight: 600 }}
-              contentStyle={{
-                backgroundColor: "white",
-                borderRadius: "8px",
-                border: "1px solid #e5e7eb",
-                zIndex: 1000,
-              }}
-            />
           </PieChart>
         </ResponsiveContainer>
 

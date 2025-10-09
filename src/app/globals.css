@@ -34,3 +34,40 @@ body {
     transform: translateX(0);
   }
 }
+
+/* Remove focus rings from all charts */
+.recharts-wrapper,
+.recharts-wrapper *,
+.recharts-cartesian-axis,
+.recharts-cartesian-axis *,
+.recharts-bar,
+.recharts-bar *,
+.recharts-line,
+.recharts-line *,
+.recharts-area,
+.recharts-area *,
+.recharts-pie,
+.recharts-pie *,
+.recharts-cell,
+.recharts-cell * {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.recharts-wrapper:focus,
+.recharts-wrapper *:focus,
+.recharts-cartesian-axis:focus,
+.recharts-cartesian-axis *:focus,
+.recharts-bar:focus,
+.recharts-bar *:focus,
+.recharts-line:focus,
+.recharts-line *:focus,
+.recharts-area:focus,
+.recharts-area *:focus,
+.recharts-pie:focus,
+.recharts-pie *:focus,
+.recharts-cell:focus,
+.recharts-cell *:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

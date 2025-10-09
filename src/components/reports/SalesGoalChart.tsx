@@ -100,6 +100,7 @@ export default function SalesGoalChart() {
           <AreaChart
             data={chartData}
             margin={{ top: 10, right: 0, left: -20, bottom: 0 }}
+            style={{ outline: 'none' }}
           >
             <defs>
               {/* Base gradient - lighter colors for all data */}

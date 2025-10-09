@@ -114,6 +114,7 @@ export default function SalesPerformanceChart() {
             margin={{ top: 10, right: 10, left: 0, bottom: 10 }}
             barSize={activeTab === "Monthly" ? 15 : 12}
             barGap={2}
+            style={{ outline: "none" }}
           >
             <defs>
               {/* USA - deep blue/purple */}

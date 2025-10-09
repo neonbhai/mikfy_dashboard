@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { TabOption } from "./chartData";
 import GrowthIndicator from "./GrowthIndicator";
 
@@ -17,6 +20,31 @@ export default function ChartHeader({
   growthPercentage = 1.3,
 }: ChartHeaderProps) {
   const tabs: TabOption[] = ["Daily", "Weekly", "Annually"];
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const [direction, setDirection] = useState<"left" | "right">("right");
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const activeIndex = tabs.indexOf(activeTab);
+    const activeRef = tabRefs.current[activeIndex];
+    const containerRect = containerRef.current?.getBoundingClientRect();
+
+    if (activeRef && containerRect) {
+      const buttonRect = activeRef.getBoundingClientRect();
+      const left = buttonRect.left - containerRect.left;
+      const width = buttonRect.width;
+
+      // Determine direction based on indicator movement
+      if (left > indicatorStyle.left) {
+        setDirection("right");
+      } else if (left < indicatorStyle.left) {
+        setDirection("left");
+      }
+
+      setIndicatorStyle({ left, width });
+    }
+  }, [activeTab, tabs]);
 
   return (
     <div className="flex justify-between items-start mb-8">
@@ -31,21 +59,40 @@ export default function ChartHeader({
         </div>
       </div>
 
-      {/* Tab Filters */}
-      <div className="bg-[#F8F8FF] rounded-[14.77px] p-1.5 flex gap-1">
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => onTabChange(tab)}
-            className={`px-4 py-2.5 rounded-[13px] text-sm font-medium transition-all ${
-              activeTab === tab
-                ? "bg-[#1D222E] text-white"
-                : "bg-transparent text-[#9291A5] hover:text-[#1D222E]"
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
+      {/* Tab Filters with sliding indicator */}
+      <div
+        className="bg-[#F8F8FF] rounded-[14.77px] p-1.5 relative"
+        ref={containerRef}
+      >
+        {/* Animated sliding indicator */}
+        <div
+          className="absolute top-[6px] bottom-[6px] bg-[#1D222E] rounded-[13px] transition-all duration-300 ease-in-out"
+          style={{
+            left: `${indicatorStyle.left}px`,
+            width: `${indicatorStyle.width}px`,
+            transform: direction === "right" ? "scaleX(1)" : "scaleX(1)",
+            transformOrigin: direction === "right" ? "left" : "right",
+          }}
+        />
+
+        <div className="flex gap-1 relative">
+          {tabs.map((tab, index) => (
+            <button
+              key={tab}
+              ref={(el) => {
+                tabRefs.current[index] = el;
+              }}
+              onClick={() => onTabChange(tab)}
+              className={`px-4 py-2.5 rounded-[13px] text-sm font-medium transition-colors duration-300 relative z-10 ${
+                activeTab === tab
+                  ? "text-white"
+                  : "text-[#9291A5] hover:text-[#1D222E]"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
