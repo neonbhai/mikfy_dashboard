@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { HomeIcon } from "../icons";
+import { Building2 } from "lucide-react";
 
 type BizMode = "b2b" | "b2c";
 
@@ -63,7 +63,7 @@ export default function BizSwitcher({
           className="w-10 h-10 flex items-center justify-center rounded-[10px] bg-white text-[#1D222E]"
           aria-label={`Business mode: ${mode.toUpperCase()}`}
         >
-          <HomeIcon className="text-[#1D222E]" size={20} />
+          <Building2 className="text-[#1D222E]" size={20} />
         </div>
       </div>
     );
@@ -77,7 +77,7 @@ export default function BizSwitcher({
         className="flex items-center justify-between gap-2 rounded-[10px] bg-white text-[#1D222E] px-4 py-2 h-11 w-full cursor-pointer hover:opacity-80 transition-opacity"
       >
         <span className="flex items-center gap-2">
-          <HomeIcon className="text-[#1D222E]" size={20} />
+          <Building2 className="text-[#1D222E]" size={20} />
           <span className="text-sm">{mode.toUpperCase()}</span>
         </span>
         <svg

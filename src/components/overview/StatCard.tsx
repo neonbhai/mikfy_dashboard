@@ -1,3 +1,4 @@
+"use client";
 import { TrendUp, TrendDown } from "../icons";
 
 interface StatCardProps {
@@ -17,8 +18,17 @@ export function StatCard({
 }: StatCardProps) {
   return (
     <div
-      className="rounded-[10px] p-4 sm:p-5  xl:p-7 flex flex-col justify-center gap-2 sm:gap-2.5 min-h-[140px] sm:min-h-[155px] md:min-h-[169px] overflow-hidden"
-      style={{ backgroundColor }}
+      className="rounded-[10px] cursor-default p-4 sm:p-5  xl:p-7 flex flex-col justify-center gap-2 sm:gap-2.5 min-h-[140px] sm:min-h-[155px] md:min-h-[169px] overflow-hidden transition-all duration-300"
+      style={{
+        backgroundColor,
+        boxShadow: `0 0 0 ${backgroundColor}`,
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.boxShadow = `0 0 30px ${backgroundColor}`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = `0 0 0 ${backgroundColor}`;
+      }}
     >
       <div className="flex flex-col gap-6 sm:gap-8 md:gap-10">
         {/* Title */}
