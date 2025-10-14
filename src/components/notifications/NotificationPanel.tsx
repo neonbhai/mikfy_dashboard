@@ -79,9 +79,10 @@ export default function NotificationPanel() {
         {notifications.map((notification) => {
           const config = typeConfig[notification.type];
           return (
-            <div
+            <Link
               key={notification.id}
-              className="bg-white border-[0.5px] border-[#F3F3EE] rounded-[10px] p-4"
+              href={notification.route}
+              className="bg-white border-[0.5px] border-[#F3F3EE] rounded-[10px] p-4 transition-all duration-300 cursor-pointer hover:shadow-[0_0_25px_rgba(243,243,238,0.8)] block"
             >
               <div className="flex flex-col gap-[10px]">
                 {/* Message and Badge */}
@@ -98,15 +99,12 @@ export default function NotificationPanel() {
                   </div>
                 </div>
 
-                {/* Action Link */}
-                <Link
-                  href={notification.route}
-                  className="text-[14px] font-light leading-[1.3em] text-[#B5200C] hover:underline"
-                >
+                {/* Action Text */}
+                <span className="text-[14px] font-light leading-[1.3em] text-[#B5200C]">
                   {notification.action}
-                </Link>
+                </span>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

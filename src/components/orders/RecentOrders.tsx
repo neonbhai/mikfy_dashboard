@@ -60,9 +60,10 @@ export default function RecentOrders() {
       {/* Orders List */}
       <div className="flex flex-col gap-[15px]">
         {orders.map((order) => (
-          <div
+          <Link
             key={order.id}
-            className="bg-white border-[0.5px] border-[rgba(30,30,30,0.1)] rounded-[10px] p-4"
+            href="/orders"
+            className="bg-white border-[0.5px] border-[rgba(30,30,30,0.1)] rounded-[10px] p-4 transition-all duration-300 cursor-pointer hover:shadow-[0_0_25px_rgba(30,30,30,0.15)] block"
           >
             <div className="flex justify-between items-center gap-4">
               {/* Customer Info */}
@@ -98,7 +99,7 @@ export default function RecentOrders() {
                 {order.amount}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
