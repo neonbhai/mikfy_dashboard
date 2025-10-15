@@ -10,8 +10,8 @@ export default function Loading() {
           <div className="h-10 bg-gray-200 rounded w-96 mx-auto"></div>
         </div>
 
-        {/* Back to Home link skeleton */}
-        <div className="h-6 bg-gray-200 rounded w-32"></div>
+        {/* Back to Home button skeleton */}
+        <div className="h-10 bg-gray-200 rounded-md w-32"></div>
       </div>
     </div>
   );

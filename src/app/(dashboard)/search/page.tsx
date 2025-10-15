@@ -23,7 +23,7 @@ export default function SearchPage() {
       {/* Back to Home link */}
       <Link
         href="/overview"
-        className="text-[16px] font-normal text-[#151515] underline hover:opacity-70 transition-opacity"
+        className="px-4 py-2 text-[16px] font-normal text-[#151515] bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
       >
         Back to Home
       </Link>
