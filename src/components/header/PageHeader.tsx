@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import Image from "next/image";
 import { BellIcon, SettingsIcon } from "@/components/icons";
 import SearchBar from "./SearchBar";
@@ -57,7 +57,13 @@ export default function PageHeader() {
           <SidebarToggle />
 
           {/* Search Bar */}
-          <SearchBar />
+          <Suspense
+            fallback={
+              <div className="w-[488px] h-[40px] bg-gray-100 rounded-full animate-pulse" />
+            }
+          >
+            <SearchBar />
+          </Suspense>
         </div>
 
         {/* Right section: Bell, Settings, UserAccount */}
