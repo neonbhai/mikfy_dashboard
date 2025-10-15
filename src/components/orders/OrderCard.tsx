@@ -62,7 +62,7 @@ const OrderCard: React.FC<OrderCardProps> = ({
         {/* Review Button */}
         <button
           onClick={handleReviewClick}
-          className="flex items-center justify-center w-full px-[10px] py-[10px] bg-[#151515] rounded-[10px] hover:bg-[#2a2a2a] transition-colors"
+          className="flex cursor-pointer items-center justify-center w-full px-[10px] py-[10px] bg-[#151515] rounded-[10px] hover:bg-[#2a2a2a] transition-colors"
         >
           <span className="text-white font-normal text-base leading-[1.3]">
             Review Order

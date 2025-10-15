@@ -49,13 +49,13 @@ const ConnectShopifyModal: React.FC<ConnectShopifyModalProps> = ({
         <div className="flex gap-3">
           <button
             onClick={onClose}
-            className="flex-1 px-4 py-3 bg-[#151515] text-white rounded-[10px] font-normal text-base leading-[1.3] hover:bg-[#2a2a2a] transition-colors"
+            className="flex-1 cursor-pointer px-4 py-3 bg-[#151515] text-white rounded-[10px] font-normal text-base leading-[1.3] hover:bg-[#2a2a2a] transition-colors"
           >
             Connect Shopify
           </button>
           <button
             onClick={onClose}
-            className="flex-1 px-4 py-3 border border-[#F3F3EE] text-[#151515] rounded-[10px] font-normal text-base leading-[1.3] hover:bg-[#F3F3EE] transition-colors"
+            className="flex-1 cursor-pointer px-4 py-3 border border-[#F3F3EE] text-[#151515] rounded-[10px] font-normal text-base leading-[1.3] hover:bg-[#F3F3EE] transition-colors"
           >
             Cancel
           </button>
